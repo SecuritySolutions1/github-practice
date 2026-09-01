@@ -20,6 +20,18 @@ public class DamageTracker {
             System.out.println("That was a weak attack.");
         }
     }
+	
+	public static int findHighest(int[] damage) {
+    int highest = damage[0];
+
+    for (int i = 1; i < damage.length; i++) {
+        if (damage[i] > highest) {
+            highest = damage[i];
+        }
+    }
+
+    return highest;
+}
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
@@ -35,10 +47,12 @@ public class DamageTracker {
         }
 
         int total = calculateTotal(damage);
+		int highest = findHighest(damage);
 
         Attack attack = new Attack("Player attack", total);
 
         attack.displayAttack();
+		System.out.println("Highest single hit: " + highest);
         displayResult(total);
 
         input.close();
